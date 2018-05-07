@@ -102,13 +102,6 @@ func (rf *Raft) GetState() (int, bool) {
 //
 func (rf *Raft) persist() {
 	// Your code here.
-	// Example:
-	// w := new(bytes.Buffer)
-	// e := gob.NewEncoder(w)
-	// e.Encode(rf.xxx)
-	// e.Encode(rf.yyy)
-	// data := w.Bytes()
-	// rf.persister.SaveRaftState(data)
 	buf := new(bytes.Buffer)
 	enc := gob.NewEncoder(buf)
 	enc.Encode(rf.currentTerm)
@@ -122,11 +115,6 @@ func (rf *Raft) persist() {
 //
 func (rf *Raft) readPersist(data []byte) {
 	// Your code here.
-	// Example:
-	// r := bytes.NewBuffer(data)
-	// d := gob.NewDecoder(r)
-	// d.Decode(&rf.xxx)
-	// d.Decode(&rf.yyy)
 	if data != nil {
 		buf := bytes.NewBuffer(data)
 		dec := gob.NewDecoder(buf)
@@ -136,9 +124,6 @@ func (rf *Raft) readPersist(data []byte) {
 	}
 }
 
-//
-// example RequestVote RPC arguments structure.
-//
 type RequestVoteArgs struct {
 	// Your data here.
 	Term         int // candidate's term
@@ -147,9 +132,6 @@ type RequestVoteArgs struct {
 	LastLogTerm  int // term of candidate's last log entry
 }
 
-//
-// example RequestVote RPC reply structure.
-//
 type RequestVoteReply struct {
 	// Your data here.
 	Term        int  // currentTerm, for candidate to update itself
@@ -184,7 +166,6 @@ func (rf *Raft) RequestVote(args RequestVoteArgs, reply *RequestVoteReply) {
 
 	// current server's current term same as the candidate
 	if args.Term == rf.currentTerm {
-		// no voted candidate
 		if rf.votedFor == -1 && uptodate {
 			rf.votedFor = args.CandidateId
 			rf.persist()
@@ -219,21 +200,14 @@ func (rf *Raft) RequestVote(args RequestVoteArgs, reply *RequestVoteReply) {
 	}
 }
 
-//
-// majority func
-//
 func majority(n int) int {
 	return n/2 + 1
 }
 
-//
-// handle vote result
-//
 func (rf *Raft) handleVoteResult(reply RequestVoteReply) {
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
 
-	// old term ignore
 	if reply.Term < rf.currentTerm {
 		return
 	}
@@ -288,9 +262,6 @@ func (rf *Raft) sendRequestVote(server int, args RequestVoteArgs, reply *Request
 	return ok
 }
 
-//
-// example AppendEntry RPC arguments structure.
-//
 type AppendEntryArgs struct {
 	Term         int
 	LeaderId    int
@@ -300,18 +271,12 @@ type AppendEntryArgs struct {
 	LeaderCommit int
 }
 
-//
-// example AppendEntry RPC reply structure.
-//
 type AppendEntryReply struct {
 	Term        int
 	Success     bool
 	CommitIndex int
 }
 
-//
-// append entries
-//
 func (rf *Raft) AppendEntries(args AppendEntryArgs, reply *AppendEntryReply) {
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
@@ -370,17 +335,11 @@ func (rf *Raft) AppendEntries(args AppendEntryArgs, reply *AppendEntryReply) {
 	rf.resetTimer()
 }
 
-//
-// send appendetries to a follower
-//
 func (rf *Raft) sendAppendEntries(server int, args AppendEntryArgs, reply *AppendEntryReply) bool {
 	ok := rf.peers[server].Call("Raft.AppendEntries", args, reply)
 	return ok
 }
 
-//
-// send appendetries to all follwer
-//
 func (rf *Raft) sendAppendEntriesToAllFollowers() {
 	for i := 0; i < len(rf.peers); i++ {
 		if i == rf.me {
@@ -409,9 +368,6 @@ func (rf *Raft) sendAppendEntriesToAllFollowers() {
 	}
 }
 
-//
-// Handle AppendEntry result
-//
 func (rf *Raft) handleAppendEntries(server int, reply AppendEntryReply) {
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
