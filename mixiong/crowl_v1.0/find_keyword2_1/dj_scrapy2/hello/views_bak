@@ -1,0 +1,125 @@
+from django.shortcuts import render
+
+# Create your views here.
+from django.http import HttpResponse,StreamingHttpResponse,FileResponse
+from django.shortcuts import render
+import os
+import sys
+import json
+sys.path.append('..')
+from hello.models import User
+#from hello.models import Test
+from hello.models import Spider_key
+import codecs
+
+def register(request):
+
+    if request.method=="POST":
+        username=request.POST.get("username")
+        password=request.POST.get("password")
+        mail=request.POST.get("mail")
+
+        ##判断用户名或者email是否存在
+        db_user=User.objects.filter(username=username)
+        db_mail=User.objects.filter(mail=mail)
+        result="0"
+        if db_user:
+            result="1"
+        elif db_mail:
+            result = "2"
+        else:
+            user_obj=User(username=username,password=password,mail=mail)
+            user_obj.save()
+        return HttpResponse(result)
+ #   if request.method=="GET":
+ #       return render(request,'register.html')
+
+def login(request):
+    if request.method=="POST":
+        password=request.POST.get("password")
+        mail=request.POST.get("mail")
+
+        result = "0"
+        ##判断用户名或者email是否存在
+        # db_user=User.objects.filter(username=username)
+        db_mail=User.objects.filter(mail=mail)
+        if db_mail:
+            db_obj = User.objects.get(mail=mail)
+            if db_obj.password!=password:
+                result="登陆成功！"
+            else:
+                result="密码不正确！"
+        else:
+            result="1"
+        return HttpResponse(result)
+    if request.method=="GET":
+        return render(request,'login.html')
+
+def search(request):
+    if request.method=="POST":
+        starturl = request.POST.get("starturl")
+        demols = request.POST.get("demols")
+        keyword = request.POST.get('keyword')
+        user="mixiong"
+        dirname=os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+        comment_path=os.path.join(dirname,"find_keyword2/spiders/sust.py")
+        log_dir=os.path.join(dirname,"dj_scrapy2/other/scrapy.log")
+        # comment="python /mnt/hgfs/centos_share/python/auto_python/find_keyword2/find_keyword2/spiders/sust.py   "+starturl+ "   " +demols+ "  " +keyword
+        comment="python "+ comment_path +  "  "   + starturl + "   " + demols + "  " + keyword + "   " + user+" >> "+log_dir +"  &"
+
+        # print (comment)
+        os.system(comment)
+        return HttpResponse("ok")
+    if request.method=="GET":
+        return render(request, 'hello.html')
+
+def showResult(request):
+    if request.method=="GET":
+        user=""
+        keyword=""
+        create_task_datetime=""
+
+        result_list=[]
+        show_content=Spider_key.objects.filter(user=user,keyword=keyword,create_task_time=create_task_datetime).order_by('-find_num')[0:10]
+        for each_show in show_content:
+            keyword=each_show.keyword
+            site=each_show.site
+            url=each_show.url
+            num=each_show.find_num
+            result_list.append({"keyword":keyword,"site":site,"url":url,"num":num})
+
+        return HttpResponse(json.dumps(result_list))
+
+def show(request):
+    if request.method=="GET":
+        user="mixiong"
+        objs=Spider_key.objects.filter(user=user)
+        result=[]
+        delete_same=[]
+
+        for each in objs:
+            keyword=each.keyword
+            date_time=each.create_task_time
+            string_time=keyword+date_time
+            if string_time not in delete_same:
+                delete_same.append(string_time)
+                result.append({"keyword":keyword,"date_time":date_time})
+
+        return HttpResponse(json.dumps(result))
+
+
+
+#def test(request):
+#    if request.method=="POST":
+#        # num =request.POST.get("num")
+#        age = request.POST.get("age")
+#        name = request.POST.get("name")
+#
+#        show_content = Test.objects.filter(name=name, age=age).order_by('-num')[0:1]
+#        result_list=[]
+#
+#        for i in show_content:
+#            result_list.append({"name":i.name,"age":i.age,"num":i.num})
+#        return HttpResponse(json.dumps(result_list))
+#    else:
+#        return render(request,"test.html")

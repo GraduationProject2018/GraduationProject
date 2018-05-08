@@ -1,0 +1,64 @@
+/root/.virtualenvs/py3/lib/python3.6/site-packages/celery/platforms.py:812: RuntimeWarning: You are running the worker with superuser privileges, which is
+absolutely not recommended!
+
+Please specify a different user using the -u option.
+
+User information: uid=0 euid=0 gid=0 egid=0
+
+  uid=uid, euid=euid, gid=gid, egid=egid,
+[2018-05-08 03:31:03,313: WARNING/MainProcess] /root/.virtualenvs/py3/lib/python3.6/site-packages/celery/apps/worker.py:161: CDeprecationWarning: 
+Starting from version 3.2 Celery will refuse to accept pickle by default.
+
+The pickle serializer is a security concern as it may give attackers
+the ability to execute any command.  It's important to secure
+your broker from unauthorized access when using pickle, so we think
+that enabling pickle should require a deliberate action and not be
+the default choice.
+
+If you depend on pickle then you should set a setting to disable this
+warning and to be sure that everything will continue working
+when you upgrade to Celery 3.2::
+
+    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+You must only enable the serializers that you will actually use.
+
+
+  warnings.warn(CDeprecationWarning(W_PICKLE_DEPRECATED))
+[2018-05-08 03:31:03,487: INFO/MainProcess] Connected to redis://127.0.0.1:6379/0
+[2018-05-08 03:31:03,495: INFO/MainProcess] mingle: searching for neighbors
+[2018-05-08 03:31:04,498: INFO/MainProcess] mingle: all alone
+[2018-05-08 03:31:04,505: WARNING/MainProcess] /root/.virtualenvs/py3/lib/python3.6/site-packages/djcelery/loaders.py:133: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warn('Using settings.DEBUG leads to a memory leak, never '
+[2018-05-08 03:31:04,505: WARNING/MainProcess] celery@VM_186_195_centos ready.
+[2018-05-08 03:31:08,240: INFO/MainProcess] Events of group {task} enabled by remote.
+/root/.virtualenvs/py3/lib/python3.6/site-packages/celery/platforms.py:812: RuntimeWarning: You are running the worker with superuser privileges, which is
+absolutely not recommended!
+
+Please specify a different user using the -u option.
+
+User information: uid=0 euid=0 gid=0 egid=0
+
+  uid=uid, euid=euid, gid=gid, egid=egid,
+[2018-05-08 03:31:26,515: WARNING/MainProcess] /root/.virtualenvs/py3/lib/python3.6/site-packages/celery/apps/worker.py:161: CDeprecationWarning: 
+Starting from version 3.2 Celery will refuse to accept pickle by default.
+
+The pickle serializer is a security concern as it may give attackers
+the ability to execute any command.  It's important to secure
+your broker from unauthorized access when using pickle, so we think
+that enabling pickle should require a deliberate action and not be
+the default choice.
+
+If you depend on pickle then you should set a setting to disable this
+warning and to be sure that everything will continue working
+when you upgrade to Celery 3.2::
+
+    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+You must only enable the serializers that you will actually use.
+
+
+  warnings.warn(CDeprecationWarning(W_PICKLE_DEPRECATED))
+[2018-05-08 03:31:26,663: ERROR/MainProcess] consumer: Cannot connect to redis://127.0.0.1:6379/0: .
+Trying again in 2.00 seconds...
+
