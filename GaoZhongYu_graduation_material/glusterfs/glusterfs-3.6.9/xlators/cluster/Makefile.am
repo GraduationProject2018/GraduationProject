@@ -1,0 +1,3 @@
+SUBDIRS = stripe afr dht @EC_XLATOR_SUBDIR@
+
+CLEANFILES = 

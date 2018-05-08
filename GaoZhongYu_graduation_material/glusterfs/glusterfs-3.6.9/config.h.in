@@ -1,0 +1,203 @@
+/* config.h.in.  Generated from configure.ac by autoheader.  */
+
+/* Use our own fusermount */
+#undef GF_FUSERMOUNT
+
+/* Use syslog for logging */
+#undef GF_USE_SYSLOG
+
+/* have argp */
+#undef HAVE_ARGP
+
+/* define if found backtrace */
+#undef HAVE_BACKTRACE
+
+/* define if lvm2app library found and bd xlator enabled */
+#undef HAVE_BD_XLATOR
+
+/* enable building crypt encryption xlator */
+#undef HAVE_CRYPT_XLATOR
+
+/* Define to 1 if you have the declaration of `lvm_lv_from_name', and to 0 if
+   you don't. */
+#undef HAVE_DECL_LVM_LV_FROM_NAME
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
+/* Define to 1 if you have the <execinfo.h> header file. */
+#undef HAVE_EXECINFO_H
+
+/* define if fallocate exists */
+#undef HAVE_FALLOCATE
+
+/* define if fdatasync exists */
+#undef HAVE_FDATASYNC
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* have sys/ioctl.h */
+#undef HAVE_IOCTL_IN_SYS_IOCTL_H
+
+/* libaio based POSIX enabled */
+#undef HAVE_LIBAIO
+
+/* Define to 1 if you have the `crypto' library (-lcrypto). */
+#undef HAVE_LIBCRYPTO
+
+/* Define to 1 if you have the `dl' library (-ldl). */
+#undef HAVE_LIBDL
+
+/* Define to 1 if you have the `intl' library (-lintl). */
+#undef HAVE_LIBINTL
+
+/* Define to 1 if you have the `pthread' library (-lpthread). */
+#undef HAVE_LIBPTHREAD
+
+/* Define to 1 if you have the `rt' library (-lrt). */
+#undef HAVE_LIBRT
+
+/* Define to 1 if using libxml2. */
+#undef HAVE_LIB_XML
+
+/* define if zlib is present */
+#undef HAVE_LIB_Z
+
+/* define if found linkat */
+#undef HAVE_LINKAT
+
+/* Define to 1 if you have the <linux/falloc.h> header file. */
+#undef HAVE_LINUX_FALLOC_H
+
+/* define if llistxattr exists */
+#undef HAVE_LLISTXATTR
+
+/* have malloc.h */
+#undef HAVE_MALLOC_H
+
+/* define if found malloc_stats */
+#undef HAVE_MALLOC_STATS
+
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Define to 1 if you have the <openssl/cmac.h> header file. */
+#undef HAVE_OPENSSL_CMAC_H
+
+/* Define to 1 if you have the <openssl/md5.h> header file. */
+#undef HAVE_OPENSSL_MD5_H
+
+/* define if posix_fallocate exists */
+#undef HAVE_POSIX_FALLOCATE
+
+/* define if libglib-2.0 library found and QEMU Block translator enabled */
+#undef HAVE_QEMU_BLOCK
+
+/* readline enabled CLI */
+#undef HAVE_READLINE
+
+/* define if found setfsuid setfsgid */
+#undef HAVE_SET_FSID
+
+/* define if found spinlock */
+#undef HAVE_SPINLOCK
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* define if found strnlen */
+#undef HAVE_STRNLEN
+
+/* Define to 1 if `st_atimespec.tv_nsec' is member of `struct stat'. */
+#undef HAVE_STRUCT_STAT_ST_ATIMESPEC_TV_NSEC
+
+/* Define to 1 if `st_atim.tv_nsec' is member of `struct stat'. */
+#undef HAVE_STRUCT_STAT_ST_ATIM_TV_NSEC
+
+/* Define to 1 if using probes. */
+#undef HAVE_SYSTEMTAP
+
+/* Define to 1 if you have the <sys/epoll.h> header file. */
+#undef HAVE_SYS_EPOLL_H
+
+/* Define to 1 if you have the <sys/extattr.h> header file. */
+#undef HAVE_SYS_EXTATTR_H
+
+/* Define to 1 if you have the <sys/ioctl.h> header file. */
+#undef HAVE_SYS_IOCTL_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <sys/xattr.h> header file. */
+#undef HAVE_SYS_XATTR_H
+
+/* define if found umount2 */
+#undef HAVE_UMOUNT2
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* Define to 1 if you have the <xmmintrin.h> header file. */
+#undef HAVE_XMMINTRIN_H
+
+/* Define to the sub-directory in which libtool stores uninstalled libraries.
+   */
+#undef LT_OBJDIR
+
+/* defined if lvm_lv_from_name() was not found in the lvm2app.h header, but
+   can be linked */
+#undef NEED_LVM_LV_FROM_NAME_DECL
+
+/* Name of package */
+#undef PACKAGE
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* The size of `int', as computed by sizeof. */
+#undef SIZEOF_INT
+
+/* The size of `long', as computed by sizeof. */
+#undef SIZEOF_LONG
+
+/* The size of `long long', as computed by sizeof. */
+#undef SIZEOF_LONG_LONG
+
+/* The size of `short', as computed by sizeof. */
+#undef SIZEOF_SHORT
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* Version number of package */
+#undef VERSION
+
+/* Define to 1 if `lex' declares `yytext' as a `char *' by default, not a
+   `char[]'. */
+#undef YYTEXT_POINTER
