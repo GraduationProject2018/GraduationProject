@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install docker
+yum install docker -y
 systemctl restart docker.service
 
 yum -y install wget gcc make python-devel openssl-devel kernel-devel graphviz kernel-debug-devel autoconf automake rpm-build redhat-rpm-config libtool
@@ -15,7 +15,7 @@ sed 's/openvswitch-kmod, //g' openvswitch-2.5.0/rhel/openvswitch.spec > openvswi
 rpmbuild -bb --nocheck openvswitch-2.5.0/rhel/openvswitch_no_kmod.spec
 
 mkdir /etc/openvswitch
-yum localinstall /home/ovs/rpmbuild/RPMS/x86_64/openvswitch-2.3.2-1.x86_64.rpm -y
+yum localinstall /home/ovs/rpmbuild/RPMS/x86_64/openvswitch-2.5.0-1.x86_64.rpm -y
 systemctl start openvswitch.service
 systemctl is-active openvswitch
 ovs-vsctl -V

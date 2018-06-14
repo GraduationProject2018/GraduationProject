@@ -17,4 +17,4 @@ RUN yum install openssh-clients -y \
 EOF
 
 docker build -t"kongkongkkk/language_images" .
-# docker pull kongkongkkk/language_images
+docker pull kongkongkkk/language_images
